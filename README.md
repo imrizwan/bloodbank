@@ -11,9 +11,3 @@ Demo: (https://learn-html-and-css-587dc.firebaseapp.com/)
 * Search Donors
 * Add Donors
 * Simple Boostrap UI
-
-#### Instructions:
-* Swap out the firebase config in ```config/constants``` with your own
-* ```npm install```
-* ```npm start```
-* Visit ```localhost:3000```
