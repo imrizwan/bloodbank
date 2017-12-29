@@ -7,7 +7,7 @@ class Search extends Component {
         super(props);
 
         this.state = {
-            blood: '',
+            blood: 'A+',
             value: 1,
             donors: []
         };
@@ -52,9 +52,11 @@ class Search extends Component {
             case "O-":
                 a.push(['O-']);
                 break;
+            default:
+                break;
         }
         a.map((v,i)=>{
-            return v.map((value,index)=>{
+            return v.map((value,index)=>
                 ref.child('/bg/'+value+ '/').on('value',(data)=>{
                     let obj = data.val();
                     for(var prop in obj){
@@ -64,7 +66,7 @@ class Search extends Component {
                         })
                     }
                 })
-            })
+            )
         })
     }
 
