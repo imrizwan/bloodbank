@@ -12,7 +12,7 @@ class Donateform extends Component {
             email: '',
             age: '',
             address: '',
-            blood: ''
+            blood: 'A+'
         };
     }
 
@@ -36,9 +36,9 @@ class Donateform extends Component {
             address: e.target.value
         })
     }
-    handleChange = (event, index, value)=>{
-        this.setState({ value })
-        this.setState({blood:value})
+    handleBlood = (e)=>{
+        // this.setState({blood: "A+"})
+        this.setState({blood:e.target.value})
     }
 
     submit(e){
@@ -48,7 +48,7 @@ class Donateform extends Component {
         // console.log(this.state.email);
         // console.log(this.state.age);
         // console.log(this.state.address);
-        // console.log(this.state.blood);
+        console.log(this.state.blood);
 
         const newDonor = {
             fullname: this.state.fullname,
@@ -60,7 +60,10 @@ class Donateform extends Component {
         // let currentUser = firebaseAuth().currentUser;
         console.log(newDonor);
         ref.child('bg/' + this.state.blood + '/'  ).push({newDonor});
-        document.getElementById("submitted").innerHTML = <div class="alert alert- success" role="alert">< a href= "#" class="alert-link" >Thank You for Donation</a ></div>   
+        // document.getElementById("submitted").innerHTML = <div class="alert alert- success" role="alert">< a href= "#" class="alert-link" >Thank You for Donation</a ></div>   
+        // var newElement = '';
+        var bodyElement = document.getElementById("submitted");
+        bodyElement.innerHTML = "Thank You For Donation";
     }
 
     render(){
@@ -91,7 +94,7 @@ class Donateform extends Component {
                     <div>
                             <div className="input-group">
                                 <span className="input-group-addon" id="basic-addon3">Blood Group</span>
-                            <select className="form-control" id="sel1">
+                                <select className="form-control" id="sel1" onChange={e => this.handleBlood(e)} required>
                                 <option>A+</option>
                                 <option>A-</option>
                                 <option>B+</option>
@@ -108,10 +111,13 @@ class Donateform extends Component {
                     </form>
                     <br/>
                     <br/>
-                    <div id="submitted">
-                        {/* message */}
+                    <div>
+                    <center>
+                    <h1 className="alert" role="alert" id="submitted">
+                    </h1>
+                    </center>
                     </div>
-                </div>
+                  </div>
         )
     }
 }
