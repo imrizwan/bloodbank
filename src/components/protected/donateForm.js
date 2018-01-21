@@ -60,10 +60,7 @@ class Donateform extends Component {
         // let currentUser = firebaseAuth().currentUser;
         console.log(newDonor);
         ref.child('bg/' + this.state.blood + '/'  ).push({newDonor});
-        // document.getElementById("submitted").innerHTML = <div class="alert alert- success" role="alert">< a href= "#" class="alert-link" >Thank You for Donation</a ></div>   
-        // var newElement = '';
-        var bodyElement = document.getElementById("submitted");
-        bodyElement.innerHTML = "Thank You For Donation";
+        // document.getElementById("submitted").innerHTML = "Thank You For Donation";
     }
 
     render(){
